@@ -58,3 +58,14 @@ async def chat(query: str = Query(...)):
 @app.get("/")
 def read_root():
     return {"status": "Physical AI Backend is Running!"}
+
+
+
+
+
+
+app = FastAPI()
+# ... baaki sara purana code ...
+
+# Ye line lazmi honi chahiye
+app = app
