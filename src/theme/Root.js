@@ -9,11 +9,12 @@ export default function Root({ children }) {
     if (!input) return;
     setResponse("Wait, thinking...");
     try {
-      const res = await fetch(`http://127.0.0.1:8000/chat?query=${input}`);
+      // ✅ Yahan humne aapka Vercel domain daal diya hai
+      const res = await fetch(`https://physical-ai-book-n7kz.vercel.app/chat?query=${encodeURIComponent(input)}`);
       const data = await res.json();
       setResponse(data.answer);
     } catch (err) {
-      setResponse("Backend se rabta nahi ho pa raha!");
+      setResponse("Backend se rabta nahi ho pa raha! Shayad server so raha hai.");
     }
   };
 
@@ -38,11 +39,12 @@ export default function Root({ children }) {
             <input 
               value={input} 
               onChange={(e) => setInput(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && askAI()}
               placeholder="Ask about ROS2 or Robots..." 
               style={{ width: '100%', marginBottom: 10, padding: 10, borderRadius: 5, border: '1px solid #ddd' }}
             />
             <button onClick={askAI} style={{ width: '100%', backgroundColor: '#25c2a0', color: 'white', border: 'none', padding: 10, borderRadius: 5, cursor: 'pointer', fontWeight: 'bold' }}>Ask AI</button>
-            <div style={{ marginTop: 15, padding: 10, backgroundColor: '#f9f9f9', borderRadius: 5, fontSize: '14px', minHeight: '50px' }}>
+            <div style={{ marginTop: 15, padding: 10, backgroundColor: '#f9f9f9', borderRadius: 5, fontSize: '14px', minHeight: '50px', maxHeight: '200px', overflowY: 'auto' }}>
               <strong>AI:</strong> {response}
             </div>
           </div>
