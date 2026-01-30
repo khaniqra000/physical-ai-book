@@ -1,15 +1,18 @@
 {
-  "devCommand": "uvicorn main:app --reload",
   "builds": [
     {
-      "src": "main.py",
+      "src": "api/main.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
+      "src": "/chat",
+      "dest": "api/main.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "main.py"
+      "dest": "api/main.py"
     }
   ]
 }

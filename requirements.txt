@@ -4,3 +4,7 @@ qdrant-client
 python-dotenv
 psycopg2-binary
 google-generativeai
+
+
+
+

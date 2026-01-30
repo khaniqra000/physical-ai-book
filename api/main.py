@@ -59,5 +59,3 @@ async def chat(query: str = Query(...)):
 def read_root():
     return {"status": "Physical AI Backend is Running!"}
 
-# Ye line Vercel ko batati hai ke 'app' kahan hai
-app = app
