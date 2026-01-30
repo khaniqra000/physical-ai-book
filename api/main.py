@@ -59,13 +59,5 @@ async def chat(query: str = Query(...)):
 def read_root():
     return {"status": "Physical AI Backend is Running!"}
 
-
-
-
-
-
-app = FastAPI()
-# ... baaki sara purana code ...
-
-# Ye line lazmi honi chahiye
+# Ye line Vercel ko batati hai ke 'app' kahan hai
 app = app
